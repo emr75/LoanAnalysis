@@ -58,7 +58,7 @@ $$Resilience = 1 - \text{Average Predicted Default Probability}$$
 ### Validation Accuracy by Tree Depth
 This plot shows how validation accuracy changed as decision tree depth increased. Performance improved with depth, then began to plateau, which helped guide hyperparameter selection and avoid unnecessary model complexity.
 
-![Validation Accuracy by Tree Depth](./images/tree-depth-validation.png)
+<img src="./images/tree-depth-validation.png" width="50%" alt="Validation Accuracy by Tree Depth">
 
 ### Recession Resilience by ZIP Code
 This map visualizes resilience across ZIP codes in the continental United States using the score:
@@ -67,12 +67,13 @@ This map visualizes resilience across ZIP codes in the continental United States
 
 Blue indicates more resilient regions, while red indicates less resilient ones.
 
-![Recession Resilience by ZIP Code](images/zip-resilience-map.png)
+<img src="./images/zip-resilience-map.png" width="50%" alt="Recession Resilience by ZIP Code">
 
 ### Industry Resilience Ranking
 This chart ranks industries by their average resilience score, helping compare which sectors appeared stronger or weaker during the recession period.
 
-![Industry Resilience Ranking](images/industry-resilience.png)
+<img src="./images/industry-resilience.png" width="50%" alt="Industry Resilience Ranking">
+
 
 ## Tech Stack
 * **Language:** Python
