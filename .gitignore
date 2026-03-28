@@ -1,2 +1,32 @@
-SBAnational.csv
+Environment / Secrets
+.env
+.env.*
+
+Python Virtual Environments
+.venv/
+venv/
+env/
+
+Python Cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+Jupyter
+.ipynb_checkpoints/
+
+Data Files
+*.csv
+SBAnational.csv.zip
+!llm_enriched_loans_sample.csv
+
+OS Files
+.DS_Store
+Thumbs.db
+
+Logs / Temp
+*.log
+*.tmp
+
 shapedata\*

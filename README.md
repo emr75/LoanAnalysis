@@ -23,6 +23,40 @@ This project analyzes **SBA loan data** to predict default likelihood during the
 * **Data Split:** 70% Training | 15% Validation | 15% Testing.
 
 ---
+## LLM-Based Feature Enrichment
+
+To extend the traditional ML pipeline, we introduced an **LLM-based enrichment layer** that transforms each loan record into structured semantic features.
+
+### Approach
+Each loan record is converted into a text-based profile and processed using an LLM to extract:
+
+- Industry classification (`industry_label`)
+- Business stage (`business_stage`)
+- Loan characteristics (`loan_backing_type`)
+- Risk factors (`risk_factors`)
+- Geographic context (`geo_context`)
+- Risk summary (`risk_summary`)
+- **Quantitative risk score (`risk_score`, 0–100)**
+
+---
+Example output:
+```json
+{
+  "industry_label": "real estate and rental and leasing",
+  "business_stage": "new business",
+  "risk_factors": ["low documentation loan", "small employee size"],
+  "risk_score": 62
+}
+```
+---
+
+### LLM Insights
+
+The LLM-generated risk scores showed directional alignment with actual loan outcomes, with defaulted loans receiving slightly higher average scores.
+
+However, the separation between groups was modest, and the scores were concentrated in a narrow range, indicating that LLM-derived features are more effective as feature enrichment signals rather than standalone predictors.
+
+---
 
 ## Model Comparison & Performance
 
@@ -51,7 +85,14 @@ $$Resilience = 1 - \text{Average Predicted Default Probability}$$
 | Real Estate & Leasing | Mining & Oil/Gas Extraction |
 | Finance & Insurance | Manufacturing |
 
----
+--
+
+## LLM Key Takeaways
+
+- Traditional ML models effectively captured structured financial risk patterns.
+- LLM-based feature extraction introduced semantic context not present in raw data.
+- LLM-derived risk scores showed weak but meaningful alignment with actual defaults.
+- Combining structured ML models with LLM-derived features represents a promising hybrid approach for financial risk analysis.
 
 ## Project Visuals
 
@@ -74,12 +115,16 @@ This chart ranks industries by their average resilience score, helping compare w
 
 <img src="./images/industry-resilience.png" width="50%" alt="Industry Resilience Ranking">
 
+### LLM Risk Score by Loan Outcome
+This plot shows the distribution of LLM-derived risk scores across loan outcomes. While defaulted loans tend to have slightly higher median risk scores, there is significant overlap between groups, indicating that the LLM signal captures some directional risk but does not strongly separate default from non-default cases.
+
+<img src="./images/boxplot.png" width="50%" alt="boxplot of LLM Risk Score ">
 
 ## Tech Stack
 * **Language:** Python
 * **Data Science:** Pandas, NumPy, Scikit-learn
+* **AI Integration:** OpenAI API (LLM feature extraction)
 * **Visualization:** Matplotlib, Seaborn
-
 ---
 
 **Authors:** Ethan Bell, Elle Robertson, Conor Zhang
